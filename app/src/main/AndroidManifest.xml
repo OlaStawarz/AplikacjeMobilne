@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.database">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:label="Strona główna">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".DodajLek"
+            android:label="Dodaj lek">
+        </activity>
+        <activity android:name=".NotificationHelper"/>
+        <activity android:name=".Edycja"
+            android:label="Edytuj lek"/>
+        <activity android:name=".DawkowanieDziennie"
+            android:label="Dawkowanie"/>
+        <activity android:name=".WyswietlanieLekow"
+            android:label="Twoje leki"/>
+        <activity android:name=".Dzisiaj"
+            android:label="Nowe powiadomienie"/>
+        <activity android:name=".PowiadomieniaDzisiaj"
+            android:label="Twoje powiadomienia"/>
+        <activity android:name=".DawkowanieTygodniowe"
+            android:label="Dawkowanie"/>
+        <receiver android:name=".AlertReciever"/>
+
+    </application>
+
+</manifest>

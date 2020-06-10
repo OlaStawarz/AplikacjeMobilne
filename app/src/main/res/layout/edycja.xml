@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/checkBoxNazwa"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
+        android:text="Nazwa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNumerLeku" />
+
+    <CheckBox
+        android:id="@+id/checkBoxJednostka"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Jednostka"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxNazwa"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxNazwa" />
+
+    <CheckBox
+        android:id="@+id/checkBoxZapas"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Zapas"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxJednostka"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxJednostka" />
+
+    <EditText
+        android:id="@+id/editTextNazwaEdycja"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxNazwa"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxNazwa" />
+
+    <Spinner
+        android:id="@+id/spinnerJednostkaEdycja"
+        android:layout_width="200dp"
+        android:layout_height="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxJednostka"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxJednostka" />
+
+    <EditText
+        android:id="@+id/editTextZapasEdycja"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxZapas"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxZapas" />
+
+    <Button
+        android:id="@+id/buttonZapiszZmiany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Zapisz"
+        app:layout_constraintEnd_toEndOf="@+id/editTextZapasEdycja"
+        app:layout_constraintTop_toBottomOf="@+id/editTextZapasEdycja" />
+
+    <TextView
+        android:id="@+id/textViewNumerLeku"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="Podaj pozycję \nleku"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxNazwa"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPozycjaEdycja"
+        android:layout_width="72dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/editTextNazwaEdycja"
+        app:layout_constraintTop_toTopOf="@+id/textViewNumerLeku" />
+</androidx.constraintlayout.widget.ConstraintLayout>

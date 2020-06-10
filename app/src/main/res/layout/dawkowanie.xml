@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/buttonDodaj6"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina" />
+
+    <EditText
+        android:id="@+id/editTextD5"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editTextD1"
+        app:layout_constraintTop_toBottomOf="@+id/editTextD4" />
+
+    <TextView
+        android:id="@+id/textViewGodzina5"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina4" />
+
+    <TextView
+        android:id="@+id/textViewOdebranaJednostka5"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="tabletka/tabletki"
+        app:layout_constraintStart_toEndOf="@+id/editTextD1"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina5" />
+
+    <Button
+        android:id="@+id/buttonDodaj5"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina5" />
+
+    <TextView
+        android:id="@+id/textViewGodzina4"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina3" />
+
+    <EditText
+        android:id="@+id/editTextD4"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editTextD1"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina4" />
+
+    <TextView
+        android:id="@+id/textViewOdebranaJednostka4"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="tabletka/tabletki"
+        app:layout_constraintStart_toEndOf="@+id/editTextD1"
+        app:layout_constraintTop_toTopOf="@+id/editTextD4" />
+
+    <Button
+        android:id="@+id/buttonDodaj4"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina4" />
+
+    <TextView
+        android:id="@+id/textViewGodzina3"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina2" />
+
+    <Button
+        android:id="@+id/buttonDodaj3"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina3" />
+
+    <Button
+        android:id="@+id/buttonDodaj2"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina2" />
+
+    <TextView
+        android:id="@+id/textViewGodzina2"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text=""
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina1" />
+
+    <EditText
+        android:id="@+id/editTextD3"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editTextD1"
+        app:layout_constraintTop_toTopOf="@+id/textViewOdebranaJednostka3" />
+
+    <TextView
+        android:id="@+id/textViewOdebranaJednostka3"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="tabletka/tabletki"
+        app:layout_constraintStart_toEndOf="@+id/editTextD1"
+        app:layout_constraintTop_toBottomOf="@+id/editTextD2" />
+
+    <EditText
+        android:id="@+id/editTextD2"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="@+id/editTextD1"
+        app:layout_constraintTop_toBottomOf="@+id/editTextD1" />
+
+    <TextView
+        android:id="@+id/textViewOdebranaJednostka2"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="tabletka/tabletki"
+        app:layout_constraintStart_toEndOf="@+id/editTextD1"
+        app:layout_constraintTop_toTopOf="@+id/editTextD2" />
+
+    <TextView
+        android:id="@+id/textViewGodzina"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Godzina"
+        app:layout_constraintEnd_toStartOf="@+id/editTextD1"
+        app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Ile razy dziennie?"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerIle"
+        android:layout_width="75dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textViewDawka"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Dawka"
+        app:layout_constraintEnd_toEndOf="@+id/editTextD1"
+        app:layout_constraintStart_toStartOf="@+id/editTextD1"
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina" />
+
+    <Button
+        android:id="@+id/buttonZatwierdz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zatwierdź"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOdebranaJednostka5" />
+
+    <EditText
+        android:id="@+id/editTextD1"
+        android:layout_width="80dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toEndOf="@+id/textViewGodzina1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDawka" />
+
+    <TextView
+        android:id="@+id/textViewOdebranaJednostka1"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="tabletka/tabletki"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/editTextD1"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDawka" />
+
+    <Button
+        android:id="@+id/buttonDodaj1"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="+"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina" />
+
+    <TextView
+        android:id="@+id/textViewGodzina1"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text=""
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
+        app:layout_constraintTop_toTopOf="@+id/buttonDodaj1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

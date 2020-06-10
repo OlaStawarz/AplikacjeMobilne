@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Strona główna"
+        android:icon="@drawable/ic_home_black_24dp"/>
+    <item
+        android:id="@+id/pils"
+        android:title="Tabletki"
+        android:icon="@drawable/ic_medicine"/>
+    <item
+        android:id="@+id/today"
+        android:title="Dzisiaj"
+        android:icon="@drawable/ic_android_today"/>
+</menu>

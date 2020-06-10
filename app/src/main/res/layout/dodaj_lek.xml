@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/context"
+    tools:context=".DodajLek">
+
+    <TextView
+        android:id="@+id/textViewZapas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zapas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewJednostka" />
+
+    <Spinner
+        android:id="@+id/spinnerDawkowanie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDawkowanie" />
+
+    <EditText
+        android:id="@+id/editNazwa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Nazwa leku"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonDodajLekDoBazy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerDawkowanie" />
+
+    <TextView
+        android:id="@+id/textViewJednostka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jednostka"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNazwa" />
+
+    <TextView
+        android:id="@+id/textViewDawkowanie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Dawkowanie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIlePozostalo" />
+
+    <EditText
+        android:id="@+id/editTextOpakowania"
+        android:layout_width="112dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Opakowania"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewZapas" />
+
+    <TextView
+        android:id="@+id/textViewOpakowania"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:text="x"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/editTextOpakowania"
+        app:layout_constraintTop_toTopOf="@+id/editTextOpakowania" />
+
+    <EditText
+        android:id="@+id/editTextIlosc"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:hint="Ilość"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/textViewOpakowania"
+        app:layout_constraintTop_toTopOf="@+id/textViewOpakowania" />
+
+    <Switch
+        android:id="@+id/switchPowiadomienie"
+        android:layout_width="61dp"
+        android:layout_height="29dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewCzyUstawic"
+        app:layout_constraintTop_toTopOf="@+id/textViewCzyUstawic" />
+
+    <TextView
+        android:id="@+id/textViewCzyUstawic"
+        android:layout_width="172dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Ustaw powiadomienie:"
+        android:textSize="15sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOpakowania" />
+
+    <EditText
+        android:id="@+id/editTextIlePozostalo"
+        android:layout_width="76dp"
+        android:layout_height="38dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/textViewIlePozostalo"
+        app:layout_constraintTop_toTopOf="@+id/textViewIlePozostalo" />
+
+    <TextView
+        android:id="@+id/textViewIlePozostalo"
+        android:layout_width="163dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:text="Powiadom mnie, gdy zapas wynosi:"
+        android:textSize="15sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCzyUstawic" />
+
+    <Button
+        android:id="@+id/buttonTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:text="Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonDodajLekDoBazy" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
