@@ -15,8 +15,8 @@ import androidx.core.app.NotificationCompat;
 
 public class NotificationHelper extends ContextWrapper {
 
-    public static final String channel_ID = "channel_ID";
-    public static final String channel_name = "channel_name";
+    public static final String channel_ID = "channel_ID", channel2_ID = "channel2_ID";
+    public static final String channel_name = "channel_name", channel2_name = "channel2_name";
 
     private NotificationManager manager;
 
@@ -34,6 +34,13 @@ public class NotificationHelper extends ContextWrapper {
         channel1.setLightColor(R.color.colorPrimary);
 
         getManager().createNotificationChannel(channel1);
+
+        NotificationChannel channel2 = new NotificationChannel(channel2_ID, channel2_name, NotificationManager.IMPORTANCE_DEFAULT);
+        channel1.enableLights(true);
+        channel1.enableVibration(true);
+        channel1.setLightColor(R.color.colorPrimary);
+
+        getManager().createNotificationChannel(channel2);
     }
 
     public NotificationManager getManager(){
@@ -44,6 +51,7 @@ public class NotificationHelper extends ContextWrapper {
     }
 
 
+    //powiadomienia dotyczące godzin przyjmowania leków
     public NotificationCompat.Builder getChannel1Notification(String title, String message, String ktoryLek, String zmniejszZapas){
         Intent intent = new Intent(this, Dzisiaj.class);
         Bundle b = new Bundle();
@@ -58,6 +66,14 @@ public class NotificationHelper extends ContextWrapper {
                 .setSmallIcon(R.drawable.ic_notification_foreground)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
+    }
+
+    //powiadomienia dotyczące kończącego się zapasu
+    public NotificationCompat.Builder getChannel2Notification(String nazwa, String zapas){
+        return new NotificationCompat.Builder(getApplicationContext(), channel2_ID)
+                .setContentTitle("Uwaga!")
+                .setContentText("Zapas leku " + nazwa + " wynosi " + zapas + "!")
+                .setSmallIcon(R.drawable.ic_notification_foreground);
     }
 
 }

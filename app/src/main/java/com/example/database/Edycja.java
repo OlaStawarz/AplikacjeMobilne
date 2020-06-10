@@ -10,16 +10,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
 
@@ -28,7 +24,7 @@ public class Edycja extends AppCompatActivity {
     private CheckBox checkBoxName, checkBoxZapas, checkBoxJednostka;
     private EditText editTextPozycja, editTextZapas, editTextNazwa;
     private Spinner spinner;
-    private Button zapisz;
+    Button zapisz;
     DatabaseReference database;
 
     @Override
@@ -36,10 +32,11 @@ public class Edycja extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edycja);
 
-
         checkBoxJednostka = findViewById(R.id.checkBoxJednostka);
         checkBoxName = findViewById(R.id.checkBoxNazwa);
         checkBoxZapas = findViewById(R.id.checkBoxZapas);
+
+        zapisz = findViewById(R.id.buttonZapiszZmiany);
 
         editTextNazwa = findViewById(R.id.editTextNazwaEdycja);
         editTextPozycja = findViewById(R.id.editTextPozycjaEdycja);
@@ -57,7 +54,7 @@ public class Edycja extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final int licznik = bundle.getInt("licznik");
-        Toast.makeText(Edycja.this, String.valueOf(licznik), Toast.LENGTH_LONG).show();
+        //Toast.makeText(Edycja.this, String.valueOf(licznik), Toast.LENGTH_LONG).show();
         checkBoxName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,14 +83,10 @@ public class Edycja extends AppCompatActivity {
             }
         });
 
-
-        zapisz = findViewById(R.id.buttonZapiszZmiany);
-
         zapisz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!editTextPozycja.getText().toString().isEmpty()) {
-
                     if (Integer.parseInt(editTextPozycja.getText().toString()) > 0
                             && Integer.parseInt(editTextPozycja.getText().toString()) <= licznik) {
                         int pozycja = Integer.parseInt(editTextPozycja.getText().toString());

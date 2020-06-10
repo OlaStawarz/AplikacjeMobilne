@@ -94,7 +94,8 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         odebraneDane = bundleDodajLek_Dawkowanie.getString("jednostka");
         odebranaNazwa = bundleDodajLek_Dawkowanie.getString("nazwa");
         odebranyLek = bundleDodajLek_Dawkowanie.getString("ktoryLek");
-        Toast.makeText(DawkowanieDziennie.this, odebraneDane + odebranaNazwa + odebranyZapas + odebranyLek, Toast.LENGTH_LONG).show();
+        //Toast.makeText(DawkowanieDziennie.this, odebraneDane + odebranaNazwa + odebranyLek, Toast.LENGTH_LONG).show();
+        
 
         btnDodaj1.setOnClickListener(new View.OnClickListener() {
             @Override

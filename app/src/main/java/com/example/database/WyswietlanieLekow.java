@@ -8,10 +8,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +23,7 @@ import java.util.ArrayList;
 public class WyswietlanieLekow extends AppCompatActivity {
 
     private ListView listView;
-    private Button btnPowrot, btnAktualizuj;
+    Button btnAktualizuj;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,10 +31,8 @@ public class WyswietlanieLekow extends AppCompatActivity {
         setContentView(R.layout.wyswietlanie_lekow);
 
         btnAktualizuj = findViewById(R.id.buttonAktualizuj);
-        //btnPowrot = findViewById(R.id.buttonPowrot);
 
-
-
+        // zliczam ile leków jest na liście, aby później przy edycji ustawić zakres wpisywania pozycji
         btnAktualizuj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +41,6 @@ public class WyswietlanieLekow extends AppCompatActivity {
                 bundle.putInt("licznik", listView.getAdapter().getCount());
                 intent.putExtras(bundle);
                 startActivity(intent);
-
             }
         });
 
@@ -62,10 +55,20 @@ public class WyswietlanieLekow extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 list.clear();
                 int i = 1;
+                String zapas;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Lek lek = snapshot.getValue(Lek.class);
+                    if(Integer.parseInt(lek.getZapas()) < 0){
+                        zapas = "0";
+                    } else {
+                        zapas = lek.getZapas();
+                    }
                     String txt = "Pozycja " + i  + "\n" + "Nazwa: " + lek.getNazwa() + "\nJednostka: " + lek.getJednostka()
-                            +"\nDawkowanie: " + lek.getDawkowanie() + "\nZapas: " + lek.getZapas();
+                            +"\nDawkowanie: " + lek.getDawkowanie() + "\nZapas: " + zapas;
+                    if (!lek.getKiedyPowiadomienie().equals("0")){
+                       txt += " (powiadomienie: " + lek.getKiedyPowiadomienie() +")";
+                    }
+
                     list.add(txt);
                     i++;
                 }

@@ -28,15 +28,16 @@ import java.util.ArrayList;
 
 public class DodajLek extends AppCompatActivity {
 
-    Spinner spinnerJednostka, spinnerDawkowanie;
-    EditText editNazwa, editOpakowania, editIlosc, editKiedyPowiadomienie;
+    private Spinner spinnerJednostka, spinnerDawkowanie;
+    private EditText editNazwa, editOpakowania, editIlosc, editKiedyPowiadomienie;
+    private Lek lek;
+    private long maxId;
+
     TextView textDawkowanie, textKiedyPowiadomienie;
     Button btnSave;
     DatabaseReference database;
-    Lek lek;
-    long maxId;
+
     String msg = "", godzinaPowiadomienia, ile, tygodniowo = "";
-    String ktoryLek;
     Switch switchPowiadomienie;
 
     @Override
@@ -62,15 +63,14 @@ public class DodajLek extends AppCompatActivity {
         dodajElementyDoSpinnera_Jednostka();
         dodajElementyDoSpinnera_Dawkowanie();
 
-        ktoryLek = "lek1";
-
-        //Dopiero po wpisaniu nazwy kolejne pola są możliwe do uzupełnienia
+        // nawiązanie połączenia z bazą danych
         database = FirebaseDatabase.getInstance().getReference().child("Lek");
 
+        // dodawanie leków jako kolejne numery - ma swoje wady przy usuwaniu leku
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists())
+                if (dataSnapshot.exists())
                     maxId = dataSnapshot.getChildrenCount();
             }
 
@@ -80,22 +80,21 @@ public class DodajLek extends AppCompatActivity {
             }
         });
 
-
+        // przekierowanie do nowej aktywności po wybraniu opcji dawkowania
         spinnerDawkowanie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(parent.getItemAtPosition(position).equals("X razy dziennie")){
+                if (parent.getItemAtPosition(position).equals("X razy dziennie")) {
                     String jednostka = spinnerJednostka.getSelectedItem().toString();
                     Intent myIntent = new Intent(DodajLek.this, DawkowanieDziennie.class);
                     Bundle bundle = new Bundle();
                     bundle.putString("jednostka", jednostka);
                     bundle.putString("nazwa", editNazwa.getText().toString().trim());
-                    //tutaj dac maxId
                     bundle.putString("ktoryLek", String.valueOf(maxId));
                     myIntent.putExtras(bundle);
                     startActivityForResult(myIntent, 101);
                 }
-                if(parent.getItemAtPosition(position).equals("X razy w tygodniu")){
+                if (parent.getItemAtPosition(position).equals("X razy w tygodniu")) {
                     Intent intentDodajLek_DawkowanieTygodniowe = new Intent(DodajLek.this, DawkowanieTygodniowe.class);
                     startActivityForResult(intentDodajLek_DawkowanieTygodniowe, 201);
                 }
@@ -108,10 +107,11 @@ public class DodajLek extends AppCompatActivity {
             }
         });
 
+        // opcjonalne dodawanie powiadomień przy pomocy swtich'a
         switchPowiadomienie.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
+                if (isChecked) {
                     editKiedyPowiadomienie.setVisibility(View.VISIBLE);
                     textKiedyPowiadomienie.setVisibility(View.VISIBLE);
                 } else {
@@ -121,8 +121,7 @@ public class DodajLek extends AppCompatActivity {
             }
         });
 
-
-
+        // dodanie leku do bazy danych
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,8 +140,8 @@ public class DodajLek extends AppCompatActivity {
                     powiadomienie.setGodzina(godzinaPowiadomienia);
                     powiadomienie.setIlosc(ile);
                     lek.setPowiadomienie(powiadomienie);
-                }
-                else {
+                } else {
+                    // w budowie! - nie dodano godziny przyjmowania leków, gdy wybrano opcję "X razy w tygodniu"
                     lek.setDawkowanie(tygodniowo);
                     powiadomienie.setGodzina("12:00");
                     powiadomienie.setIlosc("5");
@@ -150,9 +149,8 @@ public class DodajLek extends AppCompatActivity {
                 }
                 if (!editKiedyPowiadomienie.getText().toString().isEmpty()) {
                     lek.setKiedyPowiadomienie(editKiedyPowiadomienie.getText().toString());
-                }
-                else
-                    lek.setKiedyPowiadomienie("-100000");
+                } else
+                    lek.setKiedyPowiadomienie("0"); // gdy nie zdecydowano się na przychodzenie powiadomień wartość wynosi 0
                 lek.setZapas(zapas);
                 // tutaj dać maxId
                 database.child(String.valueOf(maxId)).setValue(lek);
@@ -163,32 +161,31 @@ public class DodajLek extends AppCompatActivity {
 
     }
 
-   @Override
+    // odebranie informacji o dawkowaniu
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        try{
-            if(requestCode == 101 && resultCode == Activity.RESULT_OK){
+        try {
+            if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
                 Bundle bundleResult = data.getExtras();
                 msg = bundleResult.getString("wiadomosc");
                 godzinaPowiadomienia = bundleResult.getString("godzina");
                 ile = bundleResult.getString("ile");
-                Toast.makeText(DodajLek.this, godzinaPowiadomienia + " " + ile, Toast.LENGTH_LONG).show();
+                //Toast.makeText(DodajLek.this, godzinaPowiadomienia + " " + ile, Toast.LENGTH_LONG).show();
 
             }
-            if(requestCode == 201 && resultCode == Activity.RESULT_OK) {
+            if (requestCode == 201 && resultCode == Activity.RESULT_OK) {
                 Bundle bundleResult = data.getExtras();
-                 tygodniowo = bundleResult.getString("dawkowanieTygodniowe");
-                //godzinaPowiadomienia = bundleResult.getString("godzina");
-                //ile = bundleResult.getString("ile");
-                Toast.makeText(DodajLek.this, msg, Toast.LENGTH_LONG).show();
+                tygodniowo = bundleResult.getString("dawkowanieTygodniowe");
+                //Toast.makeText(DodajLek.this, msg, Toast.LENGTH_LONG).show();
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
- private void dodajElementyDoSpinnera_Jednostka(){
+    private void dodajElementyDoSpinnera_Jednostka() {
         //Inicjalizowanie elementów spinnera
         ArrayList<String> jednostki = new ArrayList<>();
         jednostki.add("tabletka");
@@ -201,7 +198,7 @@ public class DodajLek extends AppCompatActivity {
 
     }
 
-    private void dodajElementyDoSpinnera_Dawkowanie(){
+    private void dodajElementyDoSpinnera_Dawkowanie() {
         //Inicjalizowanie elementów spinnera
         ArrayList<String> dawkowanie = new ArrayList<>();
         dawkowanie.add("-------------");

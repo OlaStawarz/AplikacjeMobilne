@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,11 +33,14 @@ public class Dzisiaj extends AppCompatActivity {
     String nazwa, zapas, jednostka, nZapas, kiedyPowiadomienie;
     TextView t, textDobraRobota;
 
+    private NotificationHelper notification;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dzisiaj);
 
+        notification = new NotificationHelper(this);
         t = findViewById(R.id.textViewNazwaDzisiaj);
         textDobraRobota = findViewById(R.id.textViewDobraRobota);
         textDobraRobota.setVisibility(View.INVISIBLE);
@@ -63,6 +67,10 @@ public class Dzisiaj extends AppCompatActivity {
                 int oIleZapas = Integer.parseInt(odebraneOIleMniejszy);
                 int nowyZapas = oZapas - oIleZapas;
                 nZapas = String.valueOf(nowyZapas);
+                if (Integer.parseInt(kiedyPowiadomienie) >= Integer.parseInt(zapas)) {
+                    Toast.makeText(Dzisiaj.this, "powiadomienie", Toast.LENGTH_LONG).show();
+                    sendNotification(nZapas, nazwa);
+                }
             }
 
             @Override
@@ -120,4 +128,11 @@ public class Dzisiaj extends AppCompatActivity {
 
 
     }
+
+
+    public void sendNotification(String zapas, String nazwa){
+        NotificationCompat.Builder nb = notification.getChannel2Notification(nazwa, zapas);
+        notification.getManager().notify(9, nb.build());
+    }
+
 }

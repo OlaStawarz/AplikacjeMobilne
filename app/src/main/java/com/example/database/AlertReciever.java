@@ -8,6 +8,7 @@ import androidx.core.app.NotificationCompat;
 
 public class AlertReciever extends BroadcastReceiver {
 
+    // klasa odpowiadająca za wysłanie powiadomienia o konkretnej godzinie
     @Override
     public void onReceive(Context context, Intent intent) {
         String title = intent.getStringExtra("nazwaLeku");
