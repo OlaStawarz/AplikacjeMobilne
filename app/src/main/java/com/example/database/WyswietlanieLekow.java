@@ -3,11 +3,15 @@ package com.example.database;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +37,7 @@ public class WyswietlanieLekow extends AppCompatActivity {
         btnAktualizuj = findViewById(R.id.buttonAktualizuj);
 
         // zliczam ile leków jest na liście, aby później przy edycji ustawić zakres wpisywania pozycji
-        btnAktualizuj.setOnClickListener(new View.OnClickListener() {
+      /*  btnAktualizuj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WyswietlanieLekow.this, Edycja.class);
@@ -42,14 +46,16 @@ public class WyswietlanieLekow extends AppCompatActivity {
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         listView = findViewById(R.id.listView);
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.lek, list);
         listView.setAdapter(adapter);
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Lek");
+
+
+        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Lek");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,6 +87,22 @@ public class WyswietlanieLekow extends AppCompatActivity {
 
             }
         });
+
+        listView.setOnItemClickListener(new OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(WyswietlanieLekow.this, String.valueOf(reference.getKey()), Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(WyswietlanieLekow.this, Edycja.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("licznik", position);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
+
+
+
 
 
     }

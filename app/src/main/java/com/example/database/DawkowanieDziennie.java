@@ -29,10 +29,9 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
 
     private EditText editTextD1, editTextD2, editTextD3, editTextD4, editTextD5;
     private Spinner spinnerIle;
-    private TextView odebranaJednostka1, odebranaJednostka2, odebranaJednostka3, odebranaJednostka4, odebranaJednostka5,
-            textViewGodzina1, textViewGodzina2, textViewGodzina3, textViewGodzina4, textViewGodzina5;
-    private String odebranaNazwa, odebranyZapas, odebranyLek, odebraneDane;
-    private Button btnDodaj1, btnDodaj2, btnDodaj3, btnDodaj4, btnDodaj5, btnZatwierdz, btnDodaj1Powtierdz, btnDodaj2Potwierdz;
+    private TextView textViewGodzina1, textViewGodzina2, textViewGodzina3, textViewGodzina4, textViewGodzina5;
+    private String odebranaNazwa, odebranyLek;
+    private Button btnDodaj1, btnDodaj2, btnDodaj3, btnDodaj4, btnDodaj5, btnZatwierdz;
     private boolean clicked1 = false, clicked2 = false;
     private Calendar c = Calendar.getInstance();
 
@@ -70,15 +69,6 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         editTextD5 = findViewById(R.id.editTextD5);
 
         spinnerIle = findViewById(R.id.spinnerIle);
-        odebranaJednostka1 = findViewById(R.id.textViewOdebranaJednostka1);
-        odebranaJednostka2 = findViewById(R.id.textViewOdebranaJednostka2);
-        odebranaJednostka3 = findViewById(R.id.textViewOdebranaJednostka3);
-        odebranaJednostka4 = findViewById(R.id.textViewOdebranaJednostka4);
-        odebranaJednostka5 = findViewById(R.id.textViewOdebranaJednostka5);
-
-        odebranaJednostka1.setText(odebraneDane);
-        odebranaJednostka2.setText(odebraneDane);
-        odebranaJednostka3.setText(odebraneDane);
 
         setVisibility();
         dodajElementyDoSpinnera();
@@ -91,11 +81,11 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
 
         intentDodajLek_Dawkowanie = getIntent();
         bundleDodajLek_Dawkowanie = intentDodajLek_Dawkowanie.getExtras();
-        odebraneDane = bundleDodajLek_Dawkowanie.getString("jednostka");
+        //odebraneDane = bundleDodajLek_Dawkowanie.getString("jednostka");
         odebranaNazwa = bundleDodajLek_Dawkowanie.getString("nazwa");
         odebranyLek = bundleDodajLek_Dawkowanie.getString("ktoryLek");
         //Toast.makeText(DawkowanieDziennie.this, odebraneDane + odebranaNazwa + odebranyLek, Toast.LENGTH_LONG).show();
-        
+
 
         btnDodaj1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +97,7 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
             }
         });
 
+        // jeśli drugi przycisk został kliknięty to zakładam, że w pierwszym oknie jest ustawione powiadomienie - więc je wysyłam
         btnDodaj2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,19 +122,18 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
                 else
                     startAlarm2(c);
                 bundleDodajLek_Dawkowanie.putString("wiadomosc", (spinnerIle.getSelectedItem().toString() + " raz/-y dziennie"));
+
                 if(textViewGodzina2.getText().toString().isEmpty()) {
                     txt1 = textViewGodzina1.getText().toString();
                     ile1 = editTextD1.getText().toString();
                     bundleDodajLek_Dawkowanie.putString("godzina", txt1);
                     bundleDodajLek_Dawkowanie.putString("ile", ile1);
-                    //startAlarm1(c);
                 }
                 else {
                     txt2 = textViewGodzina2.getText().toString();
                     ile2 = editTextD2.getText().toString();
                     bundleDodajLek_Dawkowanie.putString("godzina", txt1 + " " + txt2);
                     bundleDodajLek_Dawkowanie.putString("ile", ile1 + " " + ile2);
-                    //startAlarm2(c);
                 }
                 intentDodajLek_Dawkowanie.putExtras(bundleDodajLek_Dawkowanie);
                 setResult(Activity.RESULT_OK, intentDodajLek_Dawkowanie);
@@ -155,6 +145,7 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
 
     }
 
+    // pobranie godziny z kalendarza
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
@@ -164,6 +155,7 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         updateTimeText(c);
     }
 
+    // ustawienie clicked1 lub clicked2 z true na false umożliwia ustawienie odpowiedniego pola z godziną - korzystam z globalnej instancji kalendarza
     private void updateTimeText(Calendar c){
         String textTime = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
         if (clicked1){
@@ -175,6 +167,7 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         }
     }
 
+    // ustawienie pierwszego  alarmu
     private void startAlarm1(Calendar c) {
         createIntent();
         bundleDawkowanie_Alarm.putString("zmniejszZapas", editTextD1.getText().toString().trim());
@@ -184,6 +177,7 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         am.set(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pi);
     }
 
+    //ustawienie drugiego alarmu
     private void startAlarm2(Calendar c){
         createIntent();
         bundleDawkowanie_Alarm.putString("zmniejszZapas", editTextD2.getText().toString().trim());
@@ -198,7 +192,6 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         intentDawkowanie_Alarm = new Intent(this, AlertReciever.class);
         bundleDawkowanie_Alarm = new Bundle();
         bundleDawkowanie_Alarm.putString("nazwaLeku", odebranaNazwa);
-        //bundleDawkowanie_Alarm.putString("zapasLeku", odebranyZapas);
         bundleDawkowanie_Alarm.putString("ktoryLek1", odebranyLek);
     }
 
@@ -224,10 +217,6 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
         textViewGodzina3.setVisibility(View.INVISIBLE);
         textViewGodzina4.setVisibility(View.INVISIBLE);
         textViewGodzina5.setVisibility(View.INVISIBLE);
-        odebranaJednostka2.setVisibility(View.INVISIBLE);
-        odebranaJednostka3.setVisibility(View.INVISIBLE);
-        odebranaJednostka4.setVisibility(View.INVISIBLE);
-        odebranaJednostka5.setVisibility(View.INVISIBLE);
     }
 
     private void pokazPola(){
@@ -249,10 +238,6 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
                         textViewGodzina3.setVisibility(View.INVISIBLE);
                         textViewGodzina4.setVisibility(View.INVISIBLE);
                         textViewGodzina5.setVisibility(View.INVISIBLE);
-                        odebranaJednostka2.setVisibility(View.INVISIBLE);
-                        odebranaJednostka3.setVisibility(View.INVISIBLE);
-                        odebranaJednostka4.setVisibility(View.INVISIBLE);
-                        odebranaJednostka5.setVisibility(View.INVISIBLE);
                         break;
                     case 1:
                         btnDodaj2.setVisibility(View.VISIBLE);
@@ -267,10 +252,6 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
                         textViewGodzina3.setVisibility(View.INVISIBLE);
                         textViewGodzina4.setVisibility(View.INVISIBLE);
                         textViewGodzina5.setVisibility(View.INVISIBLE);
-                        odebranaJednostka2.setVisibility(View.VISIBLE);
-                        odebranaJednostka3.setVisibility(View.INVISIBLE);
-                        odebranaJednostka4.setVisibility(View.INVISIBLE);
-                        odebranaJednostka5.setVisibility(View.INVISIBLE);
                         break;
                     case 2:
                         btnDodaj2.setVisibility(View.VISIBLE);
@@ -285,10 +266,6 @@ public class DawkowanieDziennie extends AppCompatActivity implements TimePickerD
                         textViewGodzina3.setVisibility(View.VISIBLE);
                         textViewGodzina4.setVisibility(View.INVISIBLE);
                         textViewGodzina5.setVisibility(View.INVISIBLE);
-                        odebranaJednostka2.setVisibility(View.VISIBLE);
-                        odebranaJednostka3.setVisibility(View.VISIBLE);
-                        odebranaJednostka4.setVisibility(View.INVISIBLE);
-                        odebranaJednostka5.setVisibility(View.INVISIBLE);
                         break;
                 }
 

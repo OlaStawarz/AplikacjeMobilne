@@ -35,15 +35,6 @@
         app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
         app:layout_constraintTop_toBottomOf="@+id/textViewGodzina4" />
 
-    <TextView
-        android:id="@+id/textViewOdebranaJednostka5"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="tabletka/tabletki"
-        app:layout_constraintStart_toEndOf="@+id/editTextD1"
-        app:layout_constraintTop_toTopOf="@+id/textViewGodzina5" />
-
     <Button
         android:id="@+id/buttonDodaj5"
         android:layout_width="45dp"
@@ -70,15 +61,6 @@
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina4" />
-
-    <TextView
-        android:id="@+id/textViewOdebranaJednostka4"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="tabletka/tabletki"
-        app:layout_constraintStart_toEndOf="@+id/editTextD1"
-        app:layout_constraintTop_toTopOf="@+id/editTextD4" />
 
     <Button
         android:id="@+id/buttonDodaj4"
@@ -131,16 +113,7 @@
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
-        app:layout_constraintTop_toTopOf="@+id/textViewOdebranaJednostka3" />
-
-    <TextView
-        android:id="@+id/textViewOdebranaJednostka3"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="tabletka/tabletki"
-        app:layout_constraintStart_toEndOf="@+id/editTextD1"
-        app:layout_constraintTop_toBottomOf="@+id/editTextD2" />
+        tools:layout_editor_absoluteY="170dp" />
 
     <EditText
         android:id="@+id/editTextD2"
@@ -150,15 +123,6 @@
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
         app:layout_constraintTop_toBottomOf="@+id/editTextD1" />
-
-    <TextView
-        android:id="@+id/textViewOdebranaJednostka2"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="tabletka/tabletki"
-        app:layout_constraintStart_toEndOf="@+id/editTextD1"
-        app:layout_constraintTop_toTopOf="@+id/editTextD2" />
 
     <TextView
         android:id="@+id/textViewGodzina"
@@ -203,7 +167,7 @@
         android:layout_height="wrap_content"
         android:text="Zatwierdź"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOdebranaJednostka5" />
+        tools:layout_editor_absoluteY="305dp" />
 
     <EditText
         android:id="@+id/editTextD1"
@@ -212,15 +176,6 @@
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toEndOf="@+id/textViewGodzina1"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDawka" />
-
-    <TextView
-        android:id="@+id/textViewOdebranaJednostka1"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
-        android:text="tabletka/tabletki"
-        android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/editTextD1"
         app:layout_constraintTop_toBottomOf="@+id/textViewDawka" />
 
     <Button

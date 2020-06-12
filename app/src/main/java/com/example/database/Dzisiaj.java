@@ -24,14 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class Dzisiaj extends AppCompatActivity {
     DatabaseReference database;
     String nazwa, zapas, jednostka, nZapas, kiedyPowiadomienie;
-    TextView t, textDobraRobota;
+    TextView mojepowiadomienie, textDobraRobota;
 
     private NotificationHelper notification;
 
@@ -41,7 +37,7 @@ public class Dzisiaj extends AppCompatActivity {
         setContentView(R.layout.dzisiaj);
 
         notification = new NotificationHelper(this);
-        t = findViewById(R.id.textViewNazwaDzisiaj);
+        mojepowiadomienie = findViewById(R.id.textViewNazwaDzisiaj);
         textDobraRobota = findViewById(R.id.textViewDobraRobota);
         textDobraRobota.setVisibility(View.INVISIBLE);
         Button update = findViewById(R.id.buttonUpdate);
@@ -52,9 +48,9 @@ public class Dzisiaj extends AppCompatActivity {
         final String odebranaNazwa = bundle.getString("nazwa");
         final String odebranyLek = bundle.getString("kLek");
         final String odebraneOIleMniejszy = bundle.getString("zZapas");
-        t.setText(odebranaNazwa + ", " + odebraneOIleMniejszy);
+        mojepowiadomienie.setText(odebranaNazwa + "! Potwierdź zażycie leku w ilości: " + odebraneOIleMniejszy);
 
-
+        // połączenie z bazą danych w celu uzyskania informacji o leku
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Lek").child(odebranyLek);
         reff.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,12 +59,12 @@ public class Dzisiaj extends AppCompatActivity {
                 nazwa = dataSnapshot.child("nazwa").getValue(String.class);
                 jednostka = dataSnapshot.child("jednostka").getValue(String.class);
                 kiedyPowiadomienie = dataSnapshot.child("kiedyPowiadomienie").getValue(String.class);
-                int oZapas = Integer.parseInt(zapas);
-                int oIleZapas = Integer.parseInt(odebraneOIleMniejszy);
-                int nowyZapas = oZapas - oIleZapas;
+                int intZapas = Integer.parseInt(zapas);
+                int intIleZapas = Integer.parseInt(odebraneOIleMniejszy);
+                int nowyZapas = intZapas - intIleZapas;
                 nZapas = String.valueOf(nowyZapas);
                 if (Integer.parseInt(kiedyPowiadomienie) >= Integer.parseInt(zapas)) {
-                    Toast.makeText(Dzisiaj.this, "powiadomienie", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Dzisiaj.this, "powiadomienie", Toast.LENGTH_LONG).show(); // powiadomienie o zapasie
                     sendNotification(nZapas, nazwa);
                 }
             }
@@ -80,7 +76,7 @@ public class Dzisiaj extends AppCompatActivity {
         });
 
 
-        //database = FirebaseDatabase.getInstance().getReference().child("Lek");
+        // aktualizacja zapasu + dodanie prostej animacji
         database = FirebaseDatabase.getInstance().getReference().child("Lek").child(odebranyLek);
         update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +101,7 @@ public class Dzisiaj extends AppCompatActivity {
             }
         });
 
+        // odłożenie przyjęcia leku na za 10 minut
         delay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +116,6 @@ public class Dzisiaj extends AppCompatActivity {
                 int ticks = (int) System.currentTimeMillis();
                 PendingIntent pi = PendingIntent.getBroadcast(Dzisiaj.this, ticks, intentDzisiaj_Alarm, 0);
                 am.set(AlarmManager.RTC_WAKEUP, 600000 , pi);
-                //dodanie finish?
                 finish();
             }
         });

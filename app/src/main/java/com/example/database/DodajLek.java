@@ -88,7 +88,6 @@ public class DodajLek extends AppCompatActivity {
                     String jednostka = spinnerJednostka.getSelectedItem().toString();
                     Intent myIntent = new Intent(DodajLek.this, DawkowanieDziennie.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("jednostka", jednostka);
                     bundle.putString("nazwa", editNazwa.getText().toString().trim());
                     bundle.putString("ktoryLek", String.valueOf(maxId));
                     myIntent.putExtras(bundle);

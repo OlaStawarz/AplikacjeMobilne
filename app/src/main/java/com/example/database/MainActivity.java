@@ -64,34 +64,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-        // połączenie z bazą danych w celu zweryfikowania czy zapas się już skończył
-     /*   DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Lek");
-        reff.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String txt;
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Lek lek = snapshot.getValue(Lek.class);
-                    if (Integer.parseInt(lek.getKiedyPowiadomienie()) >= Integer.parseInt(lek.getZapas())){
-                        Toast.makeText(MainActivity.this, "powiadomienie", Toast.LENGTH_LONG).show();
-                        if (Integer.parseInt(lek.getZapas()) > 0) {
-                            txt = " wynosi " + lek.getZapas();
-
-                        } else {
-                            txt = " skończył się!";
-                        }
-                        sendNotification(txt, lek.getNazwa());
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-
     }
 
 

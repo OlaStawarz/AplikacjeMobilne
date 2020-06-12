@@ -83,14 +83,16 @@ public class Edycja extends AppCompatActivity {
             }
         });
 
+        // zapisanie wprowadzonych zmian -  dodatkowo zabezpieczenia przed wpisaniem pozycji leku, który nie jest obecnie w bazie
         zapisz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!editTextPozycja.getText().toString().isEmpty()) {
+                /*if (!editTextPozycja.getText().toString().isEmpty()) {
                     if (Integer.parseInt(editTextPozycja.getText().toString()) > 0
-                            && Integer.parseInt(editTextPozycja.getText().toString()) <= licznik) {
-                        int pozycja = Integer.parseInt(editTextPozycja.getText().toString());
-                        database = FirebaseDatabase.getInstance().getReference().child("Lek").child(String.valueOf(pozycja - 1));
+                            && Integer.parseInt(editTextPozycja.getText().toString()) <= licznik) {*/
+                        //int pozycja = Integer.parseInt(editTextPozycja.getText().toString());
+
+                        database = FirebaseDatabase.getInstance().getReference().child("Lek").child(String.valueOf(licznik));
                         //Toast.makeText(this, String.valueOf(pozycja), Toast.LENGTH_LONG).show();
                         if (!editTextZapas.getText().toString().isEmpty())
                             database.child("zapas").setValue(editTextZapas.getText().toString());
@@ -100,14 +102,14 @@ public class Edycja extends AppCompatActivity {
                             database.child("jednostka").setValue(spinner.getSelectedItem().toString());
                         finish();
                     }
-                    else {
+               /*     else {
                         editTextPozycja.setError("Nie ma takiego leku w bazie");
                     }
 
                 } else {
                     editTextPozycja.setError("To pole nie może być puste");
                 }
-            }
+            }*/
 
 
         });

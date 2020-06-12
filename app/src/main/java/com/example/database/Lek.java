@@ -7,7 +7,6 @@ public class Lek {
     private String jednostka;
     private String dawkowanie;
     private String zapas;
-    private String powiadomienia;
     private Powiadomienie powiadomienie;
     private String kiedyPowiadomienie;
 
@@ -20,10 +19,6 @@ public class Lek {
 
     public String getNazwa() {
         return nazwa;
-    }
-
-    public String getPowiadomienia(){
-        return powiadomienia;
     }
 
     public String getJednostka() {
@@ -66,7 +61,4 @@ public class Lek {
         this.zapas = zapas;
     }
 
-    public void setPowiadomienia(String powiadomienia){
-        this.powiadomienia = powiadomienia;
-    }
 }

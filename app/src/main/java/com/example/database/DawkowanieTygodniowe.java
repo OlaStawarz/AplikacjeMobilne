@@ -16,6 +16,8 @@ public class DawkowanieTygodniowe extends AppCompatActivity {
     Button dawkowanieTygodniowe;
     String dawkowanie = "";
 
+    // klasa w budowie - nie ustawiono godzin powiadomienia
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,10 +123,6 @@ public class DawkowanieTygodniowe extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
 
     }
 }
