@@ -41,7 +41,7 @@ public class PowiadomieniaDzisiaj extends AppCompatActivity {
                     String txt = "Nazwa: " + lek.getNazwa() + "\n";
                     StringBuilder pom = new StringBuilder();
                     for (int i = 0; i < godzina.length; i++){
-                        pom.append(godzina[i] + ", " + dawka[i] + " " + lek.getJednostka() + "\n");
+                        pom.append(godzina[i] + ", " + dawka[i] + " - " + lek.getJednostka() + "\n");
                     }
                     list.add(txt + pom);
                 }

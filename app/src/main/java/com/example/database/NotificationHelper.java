@@ -72,7 +72,7 @@ public class NotificationHelper extends ContextWrapper {
     public NotificationCompat.Builder getChannel2Notification(String nazwa, String zapas){
         return new NotificationCompat.Builder(getApplicationContext(), channel2_ID)
                 .setContentTitle("Uwaga!")
-                .setContentText("Zapas leku " + nazwa + " wynosi " + zapas + "!")
+                .setContentText("Usuwanie leku " + nazwa + " wynosi " + zapas + "!")
                 .setSmallIcon(R.drawable.ic_notification_foreground);
     }
 

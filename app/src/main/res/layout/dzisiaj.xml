@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,8 +22,10 @@
 
     <Button
         android:id="@+id/buttonUpdate"
-        android:layout_width="200dp"
+        android:layout_width="195dp"
         android:layout_height="110dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/round_button"
         android:backgroundTint="@android:color/holo_green_dark"
         android:text="Potwierdź"
         android:textSize="20sp"
@@ -31,10 +34,12 @@
 
     <Button
         android:id="@+id/buttonDelay"
-        android:layout_width="200dp"
+        android:layout_width="195dp"
         android:layout_height="110dp"
-        android:text="Odłóż za 10 MINUT"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/round_button"
         android:backgroundTint="@android:color/holo_red_light"
+        android:text="Odłóż za 10 MINUT"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNazwaDzisiaj" />
@@ -43,12 +48,13 @@
         android:id="@+id/textViewDobraRobota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:text="Dobra robota!\nOby tak dalej :)"
+        android:text="Dobra robota!\nOby tak dalej!"
         android:textColor="@android:color/holo_green_dark"
-        android:textStyle="bold"
         android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonUpdate" />
 

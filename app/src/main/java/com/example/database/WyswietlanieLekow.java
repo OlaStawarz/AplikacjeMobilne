@@ -27,33 +27,17 @@ import java.util.ArrayList;
 public class WyswietlanieLekow extends AppCompatActivity {
 
     private ListView listView;
-    Button btnAktualizuj;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wyswietlanie_lekow);
 
-        btnAktualizuj = findViewById(R.id.buttonAktualizuj);
-
-        // zliczam ile leków jest na liście, aby później przy edycji ustawić zakres wpisywania pozycji
-      /*  btnAktualizuj.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WyswietlanieLekow.this, Edycja.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt("licznik", listView.getAdapter().getCount());
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });*/
-
-
         listView = findViewById(R.id.listView);
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.lek, list);
         listView.setAdapter(adapter);
-
+        final ArrayList<String> positions = new ArrayList<>();
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Lek");
         reference.addValueEventListener(new ValueEventListener() {
@@ -62,6 +46,7 @@ public class WyswietlanieLekow extends AppCompatActivity {
                 list.clear();
                 int i = 1;
                 String zapas;
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Lek lek = snapshot.getValue(Lek.class);
                     if(Integer.parseInt(lek.getZapas()) < 0){
@@ -77,6 +62,8 @@ public class WyswietlanieLekow extends AppCompatActivity {
 
                     list.add(txt);
                     i++;
+                    positions.add(snapshot.getKey());
+                    //Toast.makeText(WyswietlanieLekow.this, String.valueOf(snapshot.getKey()), Toast.LENGTH_LONG).show();
                 }
                 adapter.notifyDataSetChanged();
 
@@ -91,11 +78,12 @@ public class WyswietlanieLekow extends AppCompatActivity {
         listView.setOnItemClickListener(new OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(WyswietlanieLekow.this, String.valueOf(reference.getKey()), Toast.LENGTH_LONG).show();
+                String s = positions.get(position);
+                Toast.makeText(WyswietlanieLekow.this, String.valueOf(reference.child(s).getKey()), Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(WyswietlanieLekow.this, Edycja.class);
                 Bundle bundle = new Bundle();
-                bundle.putInt("licznik", position);
+                bundle.putInt("licznik", Integer.parseInt(s));
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

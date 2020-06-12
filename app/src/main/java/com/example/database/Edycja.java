@@ -1,5 +1,6 @@
 package com.example.database;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
@@ -19,13 +21,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-public class Edycja extends AppCompatActivity {
+public class Edycja extends AppCompatActivity implements Usuwanie.UsuwanieListener{
 
     private CheckBox checkBoxName, checkBoxZapas, checkBoxJednostka;
     private EditText editTextPozycja, editTextZapas, editTextNazwa;
     private Spinner spinner;
-    Button zapisz;
+    Button zapisz, edytuj, usun;
     DatabaseReference database;
+
+    int licznik;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,11 +39,17 @@ public class Edycja extends AppCompatActivity {
         checkBoxJednostka = findViewById(R.id.checkBoxJednostka);
         checkBoxName = findViewById(R.id.checkBoxNazwa);
         checkBoxZapas = findViewById(R.id.checkBoxZapas);
+        checkBoxJednostka.setVisibility(View.INVISIBLE);
+        checkBoxZapas.setVisibility(View.INVISIBLE);
+        checkBoxName.setVisibility(View.INVISIBLE);
 
         zapisz = findViewById(R.id.buttonZapiszZmiany);
+        edytuj = findViewById(R.id.buttonEdytujLek);
+        usun = findViewById(R.id.buttonUsunLek);
+        zapisz.setVisibility(View.INVISIBLE);
 
         editTextNazwa = findViewById(R.id.editTextNazwaEdycja);
-        editTextPozycja = findViewById(R.id.editTextPozycjaEdycja);
+        //editTextPozycja = findViewById(R.id.editTextPozycjaEdycja);
         editTextZapas = findViewById(R.id.editTextZapasEdycja);
         editTextNazwa.setVisibility(View.INVISIBLE);
         editTextZapas.setVisibility(View.INVISIBLE);
@@ -53,14 +63,34 @@ public class Edycja extends AppCompatActivity {
 
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        final int licznik = bundle.getInt("licznik");
+        licznik = bundle.getInt("licznik");
         //Toast.makeText(Edycja.this, String.valueOf(licznik), Toast.LENGTH_LONG).show();
+
+        edytuj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkBoxJednostka.setVisibility(View.VISIBLE);
+                checkBoxZapas.setVisibility(View.VISIBLE);
+                checkBoxName.setVisibility(View.VISIBLE);
+                zapisz.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        usun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+
         checkBoxName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkBoxName.isChecked()) {
                     editTextNazwa.setVisibility(View.VISIBLE);
-
+                } else {
+                    editTextNazwa.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -69,7 +99,8 @@ public class Edycja extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkBoxZapas.isChecked()) {
                     editTextZapas.setVisibility(View.VISIBLE);
-
+                }  else {
+                    editTextZapas.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -78,7 +109,8 @@ public class Edycja extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkBoxJednostka.isChecked()) {
                     spinner.setVisibility(View.VISIBLE);
-
+                } else {
+                    spinner.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -87,29 +119,16 @@ public class Edycja extends AppCompatActivity {
         zapisz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if (!editTextPozycja.getText().toString().isEmpty()) {
-                    if (Integer.parseInt(editTextPozycja.getText().toString()) > 0
-                            && Integer.parseInt(editTextPozycja.getText().toString()) <= licznik) {*/
-                        //int pozycja = Integer.parseInt(editTextPozycja.getText().toString());
-
-                        database = FirebaseDatabase.getInstance().getReference().child("Lek").child(String.valueOf(licznik));
-                        //Toast.makeText(this, String.valueOf(pozycja), Toast.LENGTH_LONG).show();
-                        if (!editTextZapas.getText().toString().isEmpty())
-                            database.child("zapas").setValue(editTextZapas.getText().toString());
-                        if (!editTextNazwa.getText().toString().isEmpty())
-                            database.child("nazwa").setValue(editTextNazwa.getText().toString());
-                        if(!spinner.getSelectedItem().toString().isEmpty())
-                            database.child("jednostka").setValue(spinner.getSelectedItem().toString());
-                        finish();
-                    }
-               /*     else {
-                        editTextPozycja.setError("Nie ma takiego leku w bazie");
-                    }
-
-                } else {
-                    editTextPozycja.setError("To pole nie może być puste");
-                }
-            }*/
+                database = FirebaseDatabase.getInstance().getReference().child("Lek").child(String.valueOf(licznik));
+                //Toast.makeText(this, String.valueOf(pozycja), Toast.LENGTH_LONG).show();
+                if (!editTextZapas.getText().toString().isEmpty())
+                    database.child("zapas").setValue(editTextZapas.getText().toString());
+                if (!editTextNazwa.getText().toString().isEmpty())
+                    database.child("nazwa").setValue(editTextNazwa.getText().toString());
+                if (!spinner.getSelectedItem().toString().isEmpty())
+                    database.child("jednostka").setValue(spinner.getSelectedItem().toString());
+                finish();
+            }
 
 
         });
@@ -131,6 +150,17 @@ public class Edycja extends AppCompatActivity {
 
     }
 
+    private void openDialog(){
+        Usuwanie dialog = new Usuwanie();
+        dialog.show(getSupportFragmentManager(), "Potwierdzenie");
 
+    }
 
+    @Override
+    public void potwierdz() {
+        Toast.makeText(Edycja.this, "Usuwanie", Toast.LENGTH_LONG).show();
+        database = FirebaseDatabase.getInstance().getReference().child("Lek").child(String.valueOf(licznik));
+        database.removeValue();
+        finish();
+    }
 }

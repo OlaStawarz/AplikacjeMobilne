@@ -8,14 +8,6 @@
     android:layout_height="match_parent">
 
 
-    <Button
-        android:id="@+id/buttonDodaj6"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:text="+"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina" />
-
     <EditText
         android:id="@+id/editTextD5"
         android:layout_width="80dp"
@@ -37,9 +29,11 @@
 
     <Button
         android:id="@+id/buttonDodaj5"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:text="+"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/my_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina5" />
 
@@ -64,9 +58,11 @@
 
     <Button
         android:id="@+id/buttonDodaj4"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:text="+"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/my_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina4" />
 
@@ -82,17 +78,23 @@
 
     <Button
         android:id="@+id/buttonDodaj3"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/my_button"
         android:text="+"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextD4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina3" />
 
     <Button
         android:id="@+id/buttonDodaj2"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/my_button"
         android:text="+"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextD3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina2" />
 
@@ -113,7 +115,7 @@
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
-        tools:layout_editor_absoluteY="170dp" />
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina3" />
 
     <EditText
         android:id="@+id/editTextD2"
@@ -138,10 +140,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="13dp"
         android:text="Ile razy dziennie?"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/buttonDodaj1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
@@ -149,6 +151,7 @@
         android:layout_width="75dp"
         android:layout_height="29dp"
         android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
@@ -165,9 +168,11 @@
         android:id="@+id/buttonZatwierdz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round_button"
         android:text="Zatwierdź"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="305dp" />
+        app:layout_constraintTop_toTopOf="@+id/textViewGodzina4" />
 
     <EditText
         android:id="@+id/editTextD1"
@@ -180,18 +185,22 @@
 
     <Button
         android:id="@+id/buttonDodaj1"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:background="@drawable/my_button"
         android:text="+"
+        app:layout_constraintBottom_toTopOf="@+id/editTextD2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina"
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textViewGodzina1"
         android:layout_width="100dp"
         android:layout_height="45dp"
-        android:text=""
         android:gravity="center"
+        android:text=""
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
         app:layout_constraintTop_toTopOf="@+id/buttonDodaj1" />

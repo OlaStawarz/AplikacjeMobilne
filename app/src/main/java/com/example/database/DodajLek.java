@@ -70,8 +70,20 @@ public class DodajLek extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String x = "";
                 if (dataSnapshot.exists())
-                    maxId = dataSnapshot.getChildrenCount();
+                    //maxId = dataSnapshot.getChildrenCount();
+
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        x = snapshot.getKey();
+                        //if(x.equals(String.valueOf(maxId))){
+                        //    maxId+=1;
+                        //}
+                        Toast.makeText(DodajLek.this, x, Toast.LENGTH_LONG).show();
+
+                    }
+                    maxId = Long.parseLong(x) + 1;
+                Toast.makeText(DodajLek.this, String.valueOf(maxId), Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -80,18 +92,25 @@ public class DodajLek extends AppCompatActivity {
             }
         });
 
+
+
         // przekierowanie do nowej aktywności po wybraniu opcji dawkowania
         spinnerDawkowanie.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (parent.getItemAtPosition(position).equals("X razy dziennie")) {
-                    String jednostka = spinnerJednostka.getSelectedItem().toString();
-                    Intent myIntent = new Intent(DodajLek.this, DawkowanieDziennie.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("nazwa", editNazwa.getText().toString().trim());
-                    bundle.putString("ktoryLek", String.valueOf(maxId));
-                    myIntent.putExtras(bundle);
-                    startActivityForResult(myIntent, 101);
+                    if(editNazwa.getText().toString().isEmpty())
+                        editNazwa.setError("To pole nie może być puste!");
+                    else {
+                        String jednostka = spinnerJednostka.getSelectedItem().toString();
+                        Intent myIntent = new Intent(DodajLek.this, DawkowanieDziennie.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("nazwa", editNazwa.getText().toString().trim());
+                        bundle.putString("ktoryLek", String.valueOf(maxId));
+                        myIntent.putExtras(bundle);
+                        startActivityForResult(myIntent, 101);
+                    }
+
                 }
                 if (parent.getItemAtPosition(position).equals("X razy w tygodniu")) {
                     Intent intentDodajLek_DawkowanieTygodniowe = new Intent(DodajLek.this, DawkowanieTygodniowe.class);
@@ -125,35 +144,46 @@ public class DodajLek extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 lek = new Lek();
-                int opakowania = Integer.parseInt(editOpakowania.getText().toString());
-                int ilosc = Integer.parseInt(editIlosc.getText().toString());
-                String nazwa = editNazwa.getText().toString().trim();
-                String zapas = String.valueOf(opakowania * ilosc);
-
-                Powiadomienie powiadomienie = new Powiadomienie();
-
-                lek.setNazwa(nazwa);
-                lek.setJednostka(spinnerJednostka.getSelectedItem().toString().trim());
-                if (!msg.isEmpty()) {
-                    lek.setDawkowanie(msg);
-                    powiadomienie.setGodzina(godzinaPowiadomienia);
-                    powiadomienie.setIlosc(ile);
-                    lek.setPowiadomienie(powiadomienie);
+                if (editNazwa.getText().toString().isEmpty()){
+                    editNazwa.setError("To pole nie może być puste!");
+                } else if (spinnerDawkowanie.getSelectedItem().toString().isEmpty()){
+                    ((TextView)spinnerDawkowanie.getChildAt(0)).setError("Wybierz pozycję!");
+                } else if (editOpakowania.getText().toString().isEmpty()){
+                    editOpakowania.setError("To pole nie może być puste!");
+                } else if (editIlosc.getText().toString().isEmpty()) {
+                    editIlosc.setError("To pole nie może być puste!");
                 } else {
-                    // w budowie! - nie dodano godziny przyjmowania leków, gdy wybrano opcję "X razy w tygodniu"
-                    lek.setDawkowanie(tygodniowo);
-                    powiadomienie.setGodzina("12:00");
-                    powiadomienie.setIlosc("5");
-                    lek.setPowiadomienie(powiadomienie);
+                    int opakowania = Integer.parseInt(editOpakowania.getText().toString());
+                    int ilosc = Integer.parseInt(editIlosc.getText().toString());
+                    String nazwa = editNazwa.getText().toString().trim();
+                    String zapas = String.valueOf(opakowania * ilosc);
+
+                    Powiadomienie powiadomienie = new Powiadomienie();
+                    lek.setNazwa(nazwa);
+                    lek.setJednostka(spinnerJednostka.getSelectedItem().toString().trim());
+                    if (!msg.isEmpty()) {
+                        lek.setDawkowanie(msg);
+                        powiadomienie.setGodzina(godzinaPowiadomienia);
+                        powiadomienie.setIlosc(ile);
+                        lek.setPowiadomienie(powiadomienie);
+                    } else {
+                        // w budowie! - nie dodano godziny przyjmowania leków, gdy wybrano opcję "X razy w tygodniu"
+                        lek.setDawkowanie(tygodniowo);
+                        powiadomienie.setGodzina("12:00");
+                        powiadomienie.setIlosc("5");
+                        lek.setPowiadomienie(powiadomienie);
+                    }
+                    if (!editKiedyPowiadomienie.getText().toString().isEmpty()) {
+                        lek.setKiedyPowiadomienie(editKiedyPowiadomienie.getText().toString());
+                    } else
+                        lek.setKiedyPowiadomienie("0"); // gdy nie zdecydowano się na przychodzenie powiadomień wartość wynosi 0
+                    lek.setZapas(zapas);
+                    // tutaj dać maxId
+                    database.child(String.valueOf(maxId)).setValue(lek);
+                    //maxId += 1;
+                    finish();
                 }
-                if (!editKiedyPowiadomienie.getText().toString().isEmpty()) {
-                    lek.setKiedyPowiadomienie(editKiedyPowiadomienie.getText().toString());
-                } else
-                    lek.setKiedyPowiadomienie("0"); // gdy nie zdecydowano się na przychodzenie powiadomień wartość wynosi 0
-                lek.setZapas(zapas);
-                // tutaj dać maxId
-                database.child(String.valueOf(maxId)).setValue(lek);
-                finish();
+
             }
 
         });

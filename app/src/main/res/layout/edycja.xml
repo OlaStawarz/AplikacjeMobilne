@@ -5,15 +5,38 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/buttonEdytujLek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edytuj"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:background="@drawable/round_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toEndOf="@+id/textViewUsunLek"
+        app:layout_constraintTop_toTopOf="@+id/textViewEdytujLek" />
+
+    <TextView
+        android:id="@+id/textViewEdytujLek"
+        android:layout_width="104dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:text="Edytuj lek"
+        android:textSize="18sp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@+id/textViewUsunLek"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsunLek" />
+
     <CheckBox
         android:id="@+id/checkBoxNazwa"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Nazwa"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNumerLeku" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEdytujLek" />
 
     <CheckBox
         android:id="@+id/checkBoxJednostka"
@@ -67,26 +90,32 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Zapisz"
+        android:background="@drawable/round_button"
         app:layout_constraintEnd_toEndOf="@+id/editTextZapasEdycja"
         app:layout_constraintTop_toBottomOf="@+id/editTextZapasEdycja" />
 
     <TextView
-        android:id="@+id/textViewNumerLeku"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="15sp"
+        android:id="@+id/textViewUsunLek"
+        android:layout_width="106dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:text="Usuń lek"
+
+        android:textSize="18sp"
         android:gravity="center"
-        android:text="Podaj pozycję \nleku"
-        app:layout_constraintStart_toStartOf="@+id/checkBoxNazwa"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextPozycjaEdycja"
-        android:layout_width="72dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintStart_toStartOf="@+id/editTextNazwaEdycja"
-        app:layout_constraintTop_toTopOf="@+id/textViewNumerLeku" />
+    <Button
+        android:id="@+id/buttonUsunLek"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuń"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@android:color/holo_red_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewUsunLek"
+        app:layout_constraintTop_toTopOf="@+id/textViewUsunLek" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class Dzisiaj extends AppCompatActivity {
     DatabaseReference database;
     String nazwa, zapas, jednostka, nZapas, kiedyPowiadomienie;
     TextView mojepowiadomienie, textDobraRobota;
+    ImageView checkMark;
 
     private NotificationHelper notification;
 
@@ -40,6 +42,8 @@ public class Dzisiaj extends AppCompatActivity {
         mojepowiadomienie = findViewById(R.id.textViewNazwaDzisiaj);
         textDobraRobota = findViewById(R.id.textViewDobraRobota);
         textDobraRobota.setVisibility(View.INVISIBLE);
+        //checkMark = findViewById(R.id.imageView);
+        //checkMark.setVisibility(View.INVISIBLE);
         Button update = findViewById(R.id.buttonUpdate);
         Button delay = findViewById(R.id.buttonDelay);
 
@@ -48,7 +52,7 @@ public class Dzisiaj extends AppCompatActivity {
         final String odebranaNazwa = bundle.getString("nazwa");
         final String odebranyLek = bundle.getString("kLek");
         final String odebraneOIleMniejszy = bundle.getString("zZapas");
-        mojepowiadomienie.setText(odebranaNazwa + "! Potwierdź zażycie leku w ilości: " + odebraneOIleMniejszy);
+        mojepowiadomienie.setText(odebranaNazwa + "! Potwierdź zażycie leku!");
 
         // połączenie z bazą danych w celu uzyskania informacji o leku
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Lek").child(odebranyLek);
@@ -81,6 +85,7 @@ public class Dzisiaj extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //checkMark.setVisibility(View.VISIBLE);
                 textDobraRobota.setVisibility(View.VISIBLE);
                 YoYo.with(Techniques.Tada)
                         .duration(1000)

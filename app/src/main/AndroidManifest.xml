@@ -21,6 +21,7 @@
             android:label="Dodaj lek">
         </activity>
         <activity android:name=".NotificationHelper"/>
+
         <activity android:name=".Edycja"
             android:label="Edytuj lek"/>
         <activity android:name=".DawkowanieDziennie"

@@ -5,47 +5,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:id="@+id/context"
     tools:context=".DodajLek">
+
+    <ImageView
+        android:layout_width="158dp"
+        android:layout_height="136dp"
+        android:src="@drawable/medicine2"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewOpakowania"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editNazwa"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="56dp"
+        android:layout_height="50dp"
+        android:src="@drawable/notify"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/switchPowiadomienie" />
 
     <TextView
         android:id="@+id/textViewZapas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zapas"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewJednostka" />
 
     <Spinner
         android:id="@+id/spinnerDawkowanie"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDawkowanie" />
 
     <EditText
         android:id="@+id/editNazwa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="5dp"
         android:ems="10"
-        android:inputType="text"
         android:hint="Nazwa leku"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +69,8 @@
         android:id="@+id/buttonDodajLekDoBazy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/round_button"
         android:text="Dodaj"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerDawkowanie" />
@@ -62,6 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jednostka"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNazwa" />
 
@@ -71,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Dawkowanie"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewIlePozostalo" />
 
@@ -80,6 +100,7 @@
         android:layout_height="40dp"
         android:ems="10"
         android:hint="Opakowania"
+        android:layout_marginStart="5dp"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewZapas" />
@@ -105,26 +126,26 @@
 
     <Switch
         android:id="@+id/switchPowiadomienie"
-        android:layout_width="61dp"
-        android:layout_height="29dp"
+        android:layout_width="68dp"
+        android:layout_height="48dp"
         app:layout_constraintStart_toEndOf="@+id/textViewCzyUstawic"
         app:layout_constraintTop_toTopOf="@+id/textViewCzyUstawic" />
 
     <TextView
         android:id="@+id/textViewCzyUstawic"
-        android:layout_width="172dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="176dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="Ustaw powiadomienie:"
         android:textSize="15sp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/editTextOpakowania" />
 
     <EditText
         android:id="@+id/editTextIlePozostalo"
-        android:layout_width="76dp"
-        android:layout_height="38dp"
+        android:layout_width="87dp"
+        android:layout_height="45dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/textViewIlePozostalo"
@@ -132,12 +153,13 @@
 
     <TextView
         android:id="@+id/textViewIlePozostalo"
-        android:layout_width="163dp"
-        android:layout_height="38dp"
+        android:layout_width="166dp"
+        android:layout_height="46dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:layout_marginStart="5dp"
         android:text="Powiadom mnie, gdy zapas wynosi:"
         android:textSize="15sp"
-        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCzyUstawic" />
 
