@@ -76,14 +76,11 @@ public class DodajLek extends AppCompatActivity {
 
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                         x = snapshot.getKey();
-                        //if(x.equals(String.valueOf(maxId))){
-                        //    maxId+=1;
-                        //}
-                        Toast.makeText(DodajLek.this, x, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(DodajLek.this, x, Toast.LENGTH_LONG).show();
 
                     }
                     maxId = Long.parseLong(x) + 1;
-                Toast.makeText(DodajLek.this, String.valueOf(maxId), Toast.LENGTH_LONG).show();
+                //Toast.makeText(DodajLek.this, String.valueOf(maxId), Toast.LENGTH_LONG).show();
             }
 
             @Override

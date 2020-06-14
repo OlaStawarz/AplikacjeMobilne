@@ -52,7 +52,7 @@ public class Dzisiaj extends AppCompatActivity {
         final String odebranaNazwa = bundle.getString("nazwa");
         final String odebranyLek = bundle.getString("kLek");
         final String odebraneOIleMniejszy = bundle.getString("zZapas");
-        mojepowiadomienie.setText(odebranaNazwa + "! Potwierdź zażycie leku!");
+        mojepowiadomienie.setText(odebranaNazwa + " - potwierdź zażycie leku!");
 
         // połączenie z bazą danych w celu uzyskania informacji o leku
         DatabaseReference reff = FirebaseDatabase.getInstance().getReference().child("Lek").child(odebranyLek);
@@ -69,7 +69,7 @@ public class Dzisiaj extends AppCompatActivity {
                 nZapas = String.valueOf(nowyZapas);
                 if (Integer.parseInt(kiedyPowiadomienie) >= Integer.parseInt(zapas)) {
                     Toast.makeText(Dzisiaj.this, "powiadomienie", Toast.LENGTH_LONG).show(); // powiadomienie o zapasie
-                    sendNotification(nZapas, nazwa);
+                    sendNotification(nazwa);
                 }
             }
 
@@ -131,8 +131,8 @@ public class Dzisiaj extends AppCompatActivity {
     }
 
 
-    public void sendNotification(String zapas, String nazwa){
-        NotificationCompat.Builder nb = notification.getChannel2Notification(nazwa, zapas);
+    public void sendNotification(String nazwa){
+        NotificationCompat.Builder nb = notification.getChannel2Notification(nazwa);
         notification.getManager().notify(9, nb.build());
     }
 

@@ -10,13 +10,13 @@
     tools:context=".DodajLek">
 
     <ImageView
-        android:layout_width="183dp"
-        android:layout_height="153dp"
+        android:layout_width="276dp"
+        android:layout_height="236dp"
         android:src="@drawable/medicine2"
         app:layout_constraintBottom_toBottomOf="@+id/textViewOpakowania"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editNazwa"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -31,9 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zapas"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintEnd_toEndOf="@+id/editNazwa"
+        app:layout_constraintTop_toBottomOf="@+id/editNazwa" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -73,7 +72,8 @@
         android:background="@drawable/round_button"
         android:text="Dodaj"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerDawkowanie" />
+        app:layout_constraintStart_toEndOf="@+id/editTextIlePozostalo"
+        app:layout_constraintTop_toTopOf="@+id/textViewDawkowanie" />
 
     <TextView
         android:id="@+id/textViewJednostka"
@@ -100,9 +100,8 @@
         android:layout_height="40dp"
         android:ems="10"
         android:hint="Opakowania"
-        android:layout_marginStart="5dp"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewZapas"
         app:layout_constraintTop_toBottomOf="@+id/textViewZapas" />
 
     <TextView

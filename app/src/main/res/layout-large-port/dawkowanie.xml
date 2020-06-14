@@ -68,8 +68,8 @@
 
     <TextView
         android:id="@+id/textViewGodzina3"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text=""
         android:textSize="20sp"
@@ -78,30 +78,28 @@
 
     <Button
         android:id="@+id/buttonDodaj3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="5dp"
         android:background="@drawable/my_button"
         android:text="+"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextD4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina3" />
 
     <Button
         android:id="@+id/buttonDodaj2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="4dp"
         android:background="@drawable/my_button"
         android:text="+"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextD3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewGodzina2" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewGodzina1" />
 
     <TextView
         android:id="@+id/textViewGodzina2"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
         android:text=""
         android:gravity="center"
         android:textSize="20sp"
@@ -111,7 +109,7 @@
     <EditText
         android:id="@+id/editTextD3"
         android:layout_width="80dp"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
@@ -120,7 +118,7 @@
     <EditText
         android:id="@+id/editTextD2"
         android:layout_width="80dp"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
@@ -128,28 +126,30 @@
 
     <TextView
         android:id="@+id/textViewGodzina"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_width="136dp"
+        android:layout_height="29dp"
         android:layout_marginTop="20dp"
         android:text="Godzina"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/editTextD1"
         app:layout_constraintStart_toEndOf="@+id/buttonDodaj1"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_width="255dp"
+        android:layout_height="51dp"
         android:layout_marginTop="13dp"
         android:text="Ile razy dziennie?"
-        android:textSize="20sp"
+        android:textSize="30sp"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="@+id/buttonDodaj1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
         android:id="@+id/spinnerIle"
-        android:layout_width="75dp"
-        android:layout_height="29dp"
+        android:layout_width="148dp"
+        android:layout_height="48dp"
         android:layout_marginStart="28dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -157,20 +157,22 @@
 
     <TextView
         android:id="@+id/textViewDawka"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_width="67dp"
+        android:layout_height="31dp"
         android:text="Dawka"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/editTextD1"
         app:layout_constraintStart_toStartOf="@+id/editTextD1"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina" />
 
     <Button
         android:id="@+id/buttonZatwierdz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="138dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/round_button"
         android:text="Zatwierdź"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextD4"
         app:layout_constraintTop_toTopOf="@+id/textViewGodzina4" />
@@ -178,7 +180,7 @@
     <EditText
         android:id="@+id/editTextD1"
         android:layout_width="80dp"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:ems="10"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toEndOf="@+id/textViewGodzina1"
@@ -186,8 +188,8 @@
 
     <Button
         android:id="@+id/buttonDodaj1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="5dp"
         android:background="@drawable/my_button"
         android:text="+"
@@ -198,8 +200,8 @@
 
     <TextView
         android:id="@+id/textViewGodzina1"
-        android:layout_width="100dp"
-        android:layout_height="45dp"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
         android:gravity="center"
         android:text=""
         android:textSize="20sp"

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:layout_width="432dp"
+        android:layout_height="321dp"
+        android:background="@android:color/white"
+        android:src="@drawable/medicine"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonDodajLek"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/buttonPowiadomienia"
+        android:layout_width="271dp"
+        android:layout_height="94dp"
+        android:background="@drawable/round_button"
+        android:text="Twoje Powiadomienia"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonWyswietlLeki"
+        app:layout_constraintTop_toTopOf="@+id/buttonWyswietlLeki" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="187dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="68dp"
+        android:gravity="center"
+        android:text="Dodaj lek"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.208"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonWyswietlLeki"
+        android:layout_width="152dp"
+        android:layout_height="92dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/round_button"
+        android:text="Twoje Leki"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDodajLek" />
+
+    <Button
+        android:id="@+id/buttonDodajLek"
+        android:layout_width="135dp"
+        android:layout_height="74dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_button"
+        android:text="Dodaj"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

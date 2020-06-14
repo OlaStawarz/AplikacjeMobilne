@@ -10,13 +10,15 @@
     tools:context=".DodajLek">
 
     <ImageView
-        android:layout_width="183dp"
-        android:layout_height="153dp"
+        android:layout_width="292dp"
+        android:layout_height="223dp"
         android:src="@drawable/medicine2"
         app:layout_constraintBottom_toBottomOf="@+id/textViewOpakowania"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/editNazwa"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -37,10 +39,10 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_width="109dp"
+        android:layout_height="36dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewJednostka" />
 
@@ -56,19 +58,20 @@
 
     <EditText
         android:id="@+id/editNazwa"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
+        android:layout_width="259dp"
+        android:layout_height="69dp"
         android:layout_marginStart="5dp"
         android:ems="10"
         android:hint="Nazwa leku"
+        android:textSize="30sp"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonDodajLekDoBazy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="103dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/round_button"
         android:text="Dodaj"
@@ -77,10 +80,12 @@
 
     <TextView
         android:id="@+id/textViewJednostka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jednostka"
+        android:layout_width="112dp"
+        android:layout_height="39dp"
         android:layout_marginStart="5dp"
+        android:text="Jednostka"
+        android:textSize="20sp"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNazwa" />
 

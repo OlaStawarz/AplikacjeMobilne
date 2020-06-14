@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="145dp"
-        android:layout_height="135dp"
+        android:layout_width="180dp"
+        android:layout_height="163dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="44dp"
         android:src="@drawable/calendar"
@@ -39,10 +39,10 @@
         android:id="@+id/checkBoxPiatek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="70dp"
         android:text="piątek"
-        app:layout_constraintStart_toStartOf="@+id/checkBoxCzwartek"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxCzwartek" />
+        app:layout_constraintStart_toEndOf="@+id/checkBoxiedziałek"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxiedziałek" />
 
     <CheckBox
         android:id="@+id/checkBoxCzwartek"
@@ -95,9 +95,9 @@
         android:id="@+id/buttonZapiszTygodniowe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:background="@drawable/round_button"
         android:text="Dodaj"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/checkBoxNiedziela"
-        app:layout_constraintTop_toTopOf="@+id/checkBoxNiedziela" />
+        app:layout_constraintStart_toStartOf="@+id/checkBoxNiedziela"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxNiedziela" />
 </androidx.constraintlayout.widget.ConstraintLayout>

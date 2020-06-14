@@ -10,44 +10,45 @@
     tools:context=".DodajLek">
 
     <ImageView
-        android:layout_width="183dp"
-        android:layout_height="153dp"
+        android:layout_width="554dp"
+        android:layout_height="365dp"
         android:src="@drawable/medicine2"
         app:layout_constraintBottom_toBottomOf="@+id/textViewOpakowania"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editNazwa"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="56dp"
-        android:layout_height="50dp"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
         android:src="@drawable/notify"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/switchPowiadomienie" />
 
     <TextView
         android:id="@+id/textViewZapas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="98dp"
+        android:layout_height="36dp"
         android:text="Zapas"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/spinner"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_width="289dp"
+        android:layout_height="40dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewJednostka" />
 
     <Spinner
         android:id="@+id/spinnerDawkowanie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="279dp"
+        android:layout_height="47dp"
         android:layout_marginStart="5dp"
         android:ems="10"
         android:inputType="text"
@@ -56,96 +57,102 @@
 
     <EditText
         android:id="@+id/editNazwa"
-        android:layout_width="220dp"
-        android:layout_height="45dp"
+        android:layout_width="466dp"
+        android:layout_height="85dp"
         android:layout_marginStart="5dp"
         android:ems="10"
         android:hint="Nazwa leku"
         android:inputType="text"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonDodajLekDoBazy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_width="156dp"
+        android:layout_height="74dp"
         android:background="@drawable/round_button"
         android:text="Dodaj"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/editTextIlePozostalo"
         app:layout_constraintTop_toBottomOf="@+id/spinnerDawkowanie" />
 
     <TextView
         android:id="@+id/textViewJednostka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Jednostka"
+        android:layout_width="153dp"
+        android:layout_height="44dp"
         android:layout_marginStart="5dp"
+        android:text="Jednostka"
+        android:gravity="center"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editNazwa" />
 
     <TextView
         android:id="@+id/textViewDawkowanie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:text="Dawkowanie"
-        android:layout_marginStart="5dp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewIlePozostalo" />
 
     <EditText
         android:id="@+id/editTextOpakowania"
-        android:layout_width="112dp"
-        android:layout_height="40dp"
+        android:layout_width="178dp"
+        android:layout_height="57dp"
         android:ems="10"
         android:hint="Opakowania"
-        android:layout_marginStart="5dp"
+        android:textSize="25sp"
         android:inputType="number"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewZapas"
         app:layout_constraintTop_toBottomOf="@+id/textViewZapas" />
 
     <TextView
         android:id="@+id/textViewOpakowania"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:text="x"
+        android:layout_width="72dp"
+        android:layout_height="59dp"
         android:gravity="center"
+        android:text="x"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/editTextOpakowania"
         app:layout_constraintTop_toTopOf="@+id/editTextOpakowania" />
 
     <EditText
         android:id="@+id/editTextIlosc"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
+        android:layout_width="101dp"
+        android:layout_height="59dp"
         android:ems="10"
         android:hint="Ilość"
+        android:textSize="25sp"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/textViewOpakowania"
         app:layout_constraintTop_toTopOf="@+id/textViewOpakowania" />
 
     <Switch
         android:id="@+id/switchPowiadomienie"
-        android:layout_width="68dp"
-        android:layout_height="48dp"
+        android:layout_width="127dp"
+        android:layout_height="78dp"
         app:layout_constraintStart_toEndOf="@+id/textViewCzyUstawic"
         app:layout_constraintTop_toTopOf="@+id/textViewCzyUstawic" />
 
     <TextView
         android:id="@+id/textViewCzyUstawic"
-        android:layout_width="176dp"
-        android:layout_height="50dp"
+        android:layout_width="301dp"
+        android:layout_height="79dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Ustaw powiadomienie:"
-        android:textSize="15sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/editTextOpakowania" />
 
     <EditText
         android:id="@+id/editTextIlePozostalo"
-        android:layout_width="87dp"
-        android:layout_height="45dp"
+        android:layout_width="115dp"
+        android:layout_height="58dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toEndOf="@+id/textViewIlePozostalo"
@@ -153,13 +160,13 @@
 
     <TextView
         android:id="@+id/textViewIlePozostalo"
-        android:layout_width="166dp"
-        android:layout_height="46dp"
+        android:layout_width="264dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:layout_marginStart="5dp"
         android:text="Powiadom mnie, gdy zapas wynosi:"
-        android:textSize="15sp"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCzyUstawic" />
 

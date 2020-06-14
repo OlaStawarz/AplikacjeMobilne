@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/buttonEdytujLek"
+        android:layout_width="216dp"
+        android:layout_height="97dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:text="Edytuj"
+        android:textSize="35sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewUsunLek"
+        app:layout_constraintTop_toTopOf="@+id/textViewEdytujLek" />
+
+    <TextView
+        android:id="@+id/textViewEdytujLek"
+        android:layout_width="201dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Edytuj lek"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewUsunLek"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsunLek" />
+
+    <CheckBox
+        android:id="@+id/checkBoxNazwa"
+        android:layout_width="201dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Nazwa"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEdytujLek" />
+
+    <CheckBox
+        android:id="@+id/checkBoxJednostka"
+        android:layout_width="201dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="20dp"
+        android:text="Jednostka"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxNazwa"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxNazwa" />
+
+    <CheckBox
+        android:id="@+id/checkBoxZapas"
+        android:layout_width="197dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:text="Zapas"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxJednostka"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxJednostka" />
+
+    <EditText
+        android:id="@+id/editTextNazwaEdycja"
+        android:layout_width="227dp"
+        android:layout_height="74dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxNazwa"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxNazwa" />
+
+    <Spinner
+        android:id="@+id/spinnerJednostkaEdycja"
+        android:layout_width="227dp"
+        android:layout_height="84dp"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxJednostka"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxJednostka" />
+
+    <EditText
+        android:id="@+id/editTextZapasEdycja"
+        android:layout_width="230dp"
+        android:layout_height="81dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/checkBoxZapas"
+        app:layout_constraintTop_toTopOf="@+id/checkBoxZapas" />
+
+    <Button
+        android:id="@+id/buttonZapiszZmiany"
+        android:layout_width="172dp"
+        android:layout_height="94dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_button"
+        android:text="Zapisz"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="@+id/editTextZapasEdycja"
+        app:layout_constraintTop_toBottomOf="@+id/editTextZapasEdycja" />
+
+    <TextView
+        android:id="@+id/textViewUsunLek"
+        android:layout_width="207dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+
+        android:text="Usuń lek"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonUsunLek"
+        android:layout_width="215dp"
+        android:layout_height="90dp"
+        android:background="@drawable/round_button"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:text="Usuń"
+        android:textSize="35sp"
+        app:layout_constraintStart_toEndOf="@+id/textViewUsunLek"
+        app:layout_constraintTop_toTopOf="@+id/textViewUsunLek" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

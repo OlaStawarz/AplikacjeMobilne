@@ -69,10 +69,10 @@ public class NotificationHelper extends ContextWrapper {
     }
 
     //powiadomienia dotyczące kończącego się zapasu
-    public NotificationCompat.Builder getChannel2Notification(String nazwa, String zapas){
+    public NotificationCompat.Builder getChannel2Notification(String nazwa){
         return new NotificationCompat.Builder(getApplicationContext(), channel2_ID)
                 .setContentTitle("Uwaga!")
-                .setContentText("Usuwanie leku " + nazwa + " wynosi " + zapas + "!")
+                .setContentText("Kończy sie zapas leku " + nazwa + "!")
                 .setSmallIcon(R.drawable.ic_notification_foreground);
     }
 
